@@ -148,3 +148,8 @@ p.power_generator-card__price {
   text-align: center;
   color: crimson;
 }
+
+.advanced-form {
+  display: flex;
+  gap: 3px;
+}

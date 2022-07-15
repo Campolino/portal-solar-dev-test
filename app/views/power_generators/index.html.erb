@@ -27,7 +27,12 @@
       </div>
 
       <div class="advanced-form" style="display:none;">
-        Entradas do usuário para pesquisar uma coleção de geradores de energia com base nas recomendações fornecidas e melhor custo de frete.
+        <div class="advanced-form_select">
+          <%= select_tag(:local, options_for_select([['Local de Instalação', 1],['Casa', 2], ['Edificio', 3], ['Industria', 4]])) %>
+        </div>
+        <div class="advanced-form__btn">
+          <%= submit_tag "Pesquisar", class:"btn btn-outline-primary btn-lg"%>
+        </div>
       </div>
     <% end %>
   </div>

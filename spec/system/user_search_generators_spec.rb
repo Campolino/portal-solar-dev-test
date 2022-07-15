@@ -5,7 +5,9 @@ context 'Usuário busca por geradores' do
     it 'e visualiza geradores que possuem a caracteristica digitada' do
       visit '/'
       within '.simple-form' do
-        fill_in 'q',	with: 'trifásico' 
+        within '.simple-form__input' do
+          fill_in 'q',	with: 'trifásico'
+        end 
         click_on 'Pesquisar'
       end
 
@@ -17,7 +19,9 @@ context 'Usuário busca por geradores' do
     it 'e busca não bate com nenhum gerador' do
       visit '/'
       within '.simple-form' do
-        fill_in 'q',	with: 'casa' 
+        within '.simple-form__input' do
+          fill_in 'q',	with: 'casa' 
+        end
         click_on 'Pesquisar'
       end
 
