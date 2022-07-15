@@ -16,13 +16,13 @@
       </div>
     </div>
 
-    <%= form_tag do %>
+    <%= form_tag("/power_generators/search", method: "get") do %>
       <div class="simple-form">
         <div class="simple-form__input">
-          <input class="form-control form-control-lg" type="text" placeholder="o que procura?">
+          <%= text_field_tag :q, nil, placeholder: "o que procura?", class:"form-control form-control-lg" %>
         </div>
         <div class="simple-form__btn">
-          <button type="submit" class="btn btn-outline-primary btn-lg">Pesquisar</button>
+          <%= submit_tag "Pesquisar", class:"btn btn-outline-primary btn-lg"%>
         </div>
       </div>
 
