@@ -15,6 +15,7 @@ gem 'jquery-rails'
 gem 'uglifier', '>= 1.3.0'
 gem "roo", "~> 2.8.0"
 gem 'mimemagic', '~> 0.3.10'
+gem 'faraday'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

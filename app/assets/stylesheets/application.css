@@ -153,3 +153,26 @@ p.power_generator-card__price {
   display: flex;
   gap: 3px;
 }
+
+.no-link {
+  text-decoration: none;
+  color: black;
+}
+
+.link-centered {
+  text-align: center;
+}
+
+.home-link {
+  text-decoration: none;
+  color: black;
+  padding: 5px 10px;
+  border: 0.5px solid orangered;
+  border-radius: 5px;
+}
+
+.home-link:hover { 
+  background-color: orangered;
+  border: none;
+  box-shadow: 1px 1px;
+}
