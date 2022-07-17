@@ -1,6 +1,10 @@
 class PowerGeneratorsController < ApplicationController
   def index
     @power_generators = PowerGenerator.all
+    unless params[:order].nil?
+      @power_generators = PowerGenerator.all.order(kwp: :desc) if params[:order] == 'kwp'
+      @power_generators = PowerGenerator.all.order(price: :asc) if params[:order] == 'price'
+    end
   end
 
   def show
@@ -47,5 +51,5 @@ class PowerGeneratorsController < ApplicationController
     else
       redirect_to root_path, alert: 'Nenhum produto encontrado para essa busca'
     end
-  end  
+  end
 end
