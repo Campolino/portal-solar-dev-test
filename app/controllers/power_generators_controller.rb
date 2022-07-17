@@ -3,6 +3,28 @@ class PowerGeneratorsController < ApplicationController
     @power_generators = PowerGenerator.all
   end
 
+  def show
+    @power_generator = PowerGenerator.find_by_id(params[:id])
+  end
+
+  def prices
+    @power_generator = PowerGenerator.find_by_id(params[:id])
+    @cep = params[:cep]
+    unless @cep.nil?
+      response = Faraday.get("https://viacep.com.br/ws/#{@cep}/json/")
+      if response.body.include?('erro')
+        flash.now['alert'] = 'CEP não encontrado'
+      else
+        json_response = JSON.parse(response.body)
+        state =  json_response['uf']
+        @logradouro = json_response['logradouro']
+        @CEP = json_response['cep']
+        @freights = Freight.where("state ILIKE :state AND weight_max < :pweight", state: "#{state}", pweight: "#{@power_generator.weight}").order(:cost)
+      end
+    end
+    render :show
+  end
+
   def search
     @parameters = params[:q].downcase
     @local = params[:local].to_i
