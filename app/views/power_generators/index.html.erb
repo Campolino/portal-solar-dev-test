@@ -5,6 +5,10 @@
   </div>
 
   <div class="searcher gradient">
+    <div class="filter">
+      <%= link_to "Menor Preço", power_generators_path(order: 'price'), method: :get, class:'filter-button' %>
+      <%= link_to "Maior kWp", power_generators_path(order: 'kwp'), method: :get, class:'filter-button' %>
+    </div>
     <div class="searcher__radio">
       <div class="form-check">
         <input class="form-check-input" type="radio" name="searchRadio" id="simpleSearch" value="simple" checked>
