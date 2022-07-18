@@ -16,4 +16,11 @@ class PowerGenerator < ApplicationRecord
     trapezoidal
   ]
 
+  after_create :set_volume
+
+  private
+
+  def set_volume
+    self.volume = (self.lenght * self.width * self.height * 300).round(2)
+  end
 end
