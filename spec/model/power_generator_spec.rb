@@ -19,6 +19,7 @@ context 'def set_volume' do
                                                   weight: 118,
                                                   structure_type: :metalico
                                                 )
+      # calcula o fator cubagem do gerador
       result = @power_generator.height * @power_generator.width * @power_generator.lenght * 300
       
       expect(@power_generator.volume).to eq result
