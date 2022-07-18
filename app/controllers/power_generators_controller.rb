@@ -1,9 +1,9 @@
 class PowerGeneratorsController < ApplicationController
   def index
-    @power_generators = PowerGenerator.all
+    @power_generators = PowerGenerator.all.page params[:page]
     unless params[:order].nil?
-      @power_generators = PowerGenerator.all.order(kwp: :desc) if params[:order] == 'kwp'
-      @power_generators = PowerGenerator.all.order(price: :asc) if params[:order] == 'price'
+      @power_generators = PowerGenerator.all.order(kwp: :desc).page params[:page] if params[:order] == 'kwp'
+      @power_generators = PowerGenerator.all.order(price: :asc).page params[:page] if params[:order] == 'price'
     end
   end
 
@@ -34,17 +34,13 @@ class PowerGeneratorsController < ApplicationController
     @local = params[:local].to_i
     case @local
       when 2
-        puts "Passou 2"
-        @power_generators = PowerGenerator.all.where('kwp < :search', search: 3.0)
+        @power_generators = PowerGenerator.all.where('kwp < :search', search: 3.0).page params[:page]
       when 3
-        puts "Passou 3"
-        @power_generators = PowerGenerator.all.where('kwp < :search', search: 20.0)
+        @power_generators = PowerGenerator.all.where('kwp < :search', search: 20.0).page params[:page]
       when 4
-        puts "Passou 4"
-        @power_generators = PowerGenerator.all.where('kwp >= :search', search: 20.0)
+        @power_generators = PowerGenerator.all.where('kwp >= :search', search: 20.0).page params[:page]
       else
-        puts "Passou tudo"
-        @power_generators = PowerGenerator.all.where('name ILIKE :search', search: "%#{@parameters}%").or(PowerGenerator.all.where('description ILIKE :search', search: "%#{@parameters}%")).or(PowerGenerator.all.where('manufacturer ILIKE :search', search: "%#{@parameters}%"))
+        @power_generators = PowerGenerator.all.where('name ILIKE :search', search: "%#{@parameters}%").or(PowerGenerator.all.where('description ILIKE :search', search: "%#{@parameters}%")).or(PowerGenerator.all.where('manufacturer ILIKE :search', search: "%#{@parameters}%")).page params[:page]
     end
     if @power_generators.any?
       render :index
