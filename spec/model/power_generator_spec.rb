@@ -20,7 +20,6 @@ context 'def set_volume' do
                                                   structure_type: :metalico
                                                 )
       result = @power_generator.height * @power_generator.width * @power_generator.lenght * 300
-      
       expect(@power_generator.volume).to eq result
     end
   end  
