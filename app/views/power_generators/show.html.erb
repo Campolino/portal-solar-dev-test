@@ -21,7 +21,8 @@
 
     <div class="cep-box">
       <%= form_tag("/power_generators/#{@power_generator.id}/prices", method: "get") do %>
-        <div class="simple-form">
+        <div class="simple-form cep">
+          <p><strong>Consulte o frete:</strong></p>
           <div class="simple-form__input">
             <%= text_field_tag :cep, nil, placeholder: "digite o cep", class:"form-control form-control-lg", minlength: 8 , maxlength: 8 %>
           </div>
