@@ -23,7 +23,7 @@ class PowerGeneratorsController < ApplicationController
         state =  json_response['uf']
         @logradouro = json_response['logradouro']
         @CEP = json_response['cep']
-        @freights = Freight.where("state ILIKE :state AND weight_max < :pweight", state: "#{state}", pweight: "#{@power_generator.weight}").order(:cost)
+        @freights = Freight.where("state ILIKE :state AND weight_max < :pweight", state: "#{state}", pweight: "#{@power_generator.weight}").order(:volume)
       end
     end
     render :show
