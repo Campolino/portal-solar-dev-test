@@ -3,7 +3,7 @@ require 'rails_helper'
 context 'Usuário busca por geradores' do
   describe 'de forma simples' do
     it 'e visualiza geradores que possuem a caracteristica digitada' do
-      visit '/'
+      visit root_path
       within '.simple-form' do
         within '.simple-form__input' do
           fill_in 'q',	with: 'trifásico'
@@ -17,7 +17,7 @@ context 'Usuário busca por geradores' do
     end
 
     it 'e busca não bate com nenhum gerador' do
-      visit '/'
+      visit root_path
       within '.simple-form' do
         within '.simple-form__input' do
           fill_in 'q',	with: 'casa' 

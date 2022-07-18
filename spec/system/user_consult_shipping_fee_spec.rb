@@ -7,7 +7,7 @@ context 'Usuário acessa a página de qualquer gerador' do
       JSONresponse = JSON.parse(response.body)
       state = JSONresponse['uf']
       
-      visit '/'
+      visit root_path
       click_on 'TRIFÁSICO 380V', :match => :first
       fill_in 'cep', with: '89287395'
       click_on 'Consultar'
